@@ -54,6 +54,15 @@ function calculateCatAge() {
 	catAgeOutput.value = `${years} ${getRightYearWord(years)} и ${months} ${getRightMonthsWord(months)}`
 }
 
+function actOnPressedEnter(event) {
+	if (event.key !== 'Enter') {
+		return
+	}
+
+	calculateCatAge()
+}
+
 ageInput.addEventListener('input', filterNotDigits)
 
 button.addEventListener('click', calculateCatAge)
+ageInput.addEventListener('keypress', actOnPressedEnter)
