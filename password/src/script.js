@@ -12,12 +12,14 @@ function transformScoreToColor(number) {
 			return 'rgba(150, 255, 0, 0.7)'
 		case 4:
 			return 'rgba(0, 255, 0, 0.7)'
+		default:
+			return 'rgb(255, 255, 255)'
 	}
 }
 
 function showPasswordStrengthInColor(event) {
 	const target = event.target
-	const score = zxcvbn(target.value).score
+	const score = target.value ? zxcvbn(target.value).score : undefined
 	target.style['background-color'] = transformScoreToColor(score)
 }
 
