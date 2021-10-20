@@ -3,12 +3,7 @@ const button = document.querySelector('.button')
 const catAgeOutput = document.querySelector('.cat-age-output')
 
 function filterNotDigits(event) {
-	const target = event.target
-
-	target.value = target.value
-		.split('')
-		.filter((letter) => letter.match(/\d/))
-		.join('')
+	event.target.value = event.target.value.replace(/\D/, '')
 }
 
 function getRightYearWord(number) {
@@ -45,12 +40,12 @@ function calculateCatAge() {
 		return
 	}
 
-	if (+ageInput.value > 116) {
+	if (Number(ageInput.value) > 116) {
 		catAgeOutput.value = 'нет данных'
 		return
 	}
 
-	const { years, months } = catCalculator.getCatAgeObject(+ageInput.value)
+	const { years, months } = catCalculator.getCatAgeObject(Number(ageInput.value))
 	catAgeOutput.value = `${years} ${getRightYearWord(years)} и ${months} ${getRightMonthsWord(months)}`
 }
 
